@@ -1,4 +1,4 @@
-# EOD
+# EODtest
 
 ![image](eod-logo.png)
 
