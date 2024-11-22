@@ -3,7 +3,7 @@ import torch
 
 samples_per_cls = torch.tensor(torch.load('cocolt_category_sample_counts.pkl')).float()
 beta = 0.99 #可调参数
-effective_num = 1.0 + (-1.0 * beta) * torch.pow((beta + 1.0) / 2, samples_per_cls) #modified
+effective_num = 1.0 + (-1.0 * beta) * torch.pow((beta + 1.0) / 2, samples_per_cls-1) #modified
 #effective_num = 1.0 - torch.pow(beta, samples_per_cls) #origin version
 effective_num = effective_num / (1.0 - beta) 
 
