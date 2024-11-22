@@ -3,7 +3,7 @@ This is the official repository for **Rectify the Matching Bias for Dense Long-T
 ![image](framewowrk.png)
 
 ## Installation
-Tested on Ubuntu 18.04, CUDA XX.X, Pytorch 1.8.1
+Tested on Ubuntu 18.04, CUDA 12.1, Pytorch 1.8.1
 ```shell
 conda create -n rect-mb python=xx.xx
 conda activate rect-mb
@@ -44,8 +44,7 @@ dataset: # Required.
 Step2: train
 
 ```shell
-bash script/train.sh
-python -m eod train --config configs/det/yolox/yolox_tiny.yaml --nm 1 --ng 8 --launch pytorch 2>&1 | tee log.train
+python -m eod train --config configs/det/efl/efl_improved_baseline_r50_2x_rfs.yaml --nm 1 --ng 2 --launch pytorch 2>&1 | tee log.train_r50  
 ```
 * --config: yamls in configs/
 * --nm: machine number
@@ -58,5 +57,9 @@ Step1: edit config of evaluating dataset
 Step2: test
 
 ```shell
-python xxx
+python -m eod train -e --config configs/det/efl/efl_improved_baseline_r50_2x_rfs.yaml  --nm 1 --ng 1 --launch pytorch 2>&1 | tee log.test_r50
 ```
+* --config: yamls in configs/
+* --nm: machine number
+* --ng: gpu number for each machine
+* --launch: slurm or pytorch
